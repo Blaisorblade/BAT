@@ -32,6 +32,8 @@
  */
 package de.tud.cs.st.bat
 
+import resolved._
+
 /**
  * Functionality to extract dependencies between class files.
  *
@@ -40,5 +42,62 @@ package de.tud.cs.st.bat
 package object dependency {
 
     type DependencyType = DependencyType.Value
+
+    /**
+     * Enumeration of all kinds of dependencies that are extracted by the [[de.tud.cs.st.bat.resolved.dependency.DependencyExtractor]].
+     *
+     * @author Thomas Schlosser
+     * @author Michael Eichberg
+     */
+    object DependencyType extends Enumeration {
+
+      // class/method/field definition related dependency types
+      val EXTENDS = Value("extends")
+      val IMPLEMENTS = Value("implements")
+      val IS_INSTANCE_MEMBER_OF = Value("is instance member of")
+      val IS_CLASS_MEMBER_OF = Value("is class member of")
+      val IS_INNER_CLASS_OF = Value("is inner class of")
+
+      // field definition related dependency types
+      val IS_OF_TYPE = Value("is of type")
+      val USES_CONSTANT_VALUE_OF_TYPE = Value("uses constant value of type")
+
+      // method definition related dependency types
+      val RETURNS = Value("returns")
+      val HAS_PARAMETER_OF_TYPE = Value("has parameter of type")
+      val THROWS = Value("throws")
+      val CATCHES = Value("catches")
+
+      // code related dependency types
+      val HAS_LOCAL_VARIABLE_OF_TYPE = Value("has local variable of type")
+      val CREATES_ARRAY_OF_TYPE = Value("creates array of type")
+      val CASTS_INTO = Value("casts into")
+      val CHECKS_INSTANCEOF = Value("checks instanceOf")
+      val CREATES = Value("creates")
+      val USES_FIELD_DECLARING_TYPE = Value("uses field declaring type")
+      val READS_FIELD = Value("reads field")
+      val WRITES_FIELD = Value("writes field")
+      val USES_FIELD_READ_TYPE = Value("uses field read type")
+      val USES_FIELD_WRITE_TYPE = Value("uses field write type")
+      val USES_PARAMETER_TYPE = Value("uses parameter type")
+      val USES_RETURN_TYPE = Value("uses return type")
+      val USES_METHOD_DECLARING_TYPE = Value("uses method declaring type")
+      val CALLS_METHOD = Value("calls method")
+      val CALLS_INTERFACE_METHOD = Value("calls interface method")
+
+      // annotation related dependency types
+      val ANNOTATED_WITH = Value("annotated with")
+      val PARAMETER_ANNOTATED_WITH = Value("parameter annotated with")
+
+      // element value related dependency type
+      val USES_DEFAULT_CLASS_VALUE_TYPE = Value("uses default class value type")
+      val USES_DEFAULT_ENUM_VALUE_TYPE = Value("uses default enum value type")
+      val USES_ENUM_VALUE = Value("uses enum value")
+      val USES_DEFAULT_ANNOTATION_VALUE_TYPE = Value("uses default annotation value type")
+
+      // signature/type parameter related dependency types
+      val USES_TYPE_IN_TYPE_PARAMETERS = Value("uses type in type parameters")
+
+    }
 
 }

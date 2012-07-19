@@ -6,7 +6,7 @@
 
    <modelVersion>4.0.0</modelVersion>
    <properties>
-      <scala.baseversion>2.9.2</scala.baseversion>
+      <scala.baseversion>2.10</scala.baseversion>
    </properties>
 
    <parent>

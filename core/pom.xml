@@ -5,6 +5,9 @@
    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
    <modelVersion>4.0.0</modelVersion>
+   <properties>
+      <scala.baseversion>2.9.2</scala.baseversion>
+   </properties>
 
    <parent>
       <groupId>de.tud.cs.st</groupId>

@@ -22,7 +22,7 @@
 	<modules>
 		<module>core</module>
 		<module>ext</module>
-		<module>demo</module>
+		<!--<module>demo</module>-->
 	</modules>
 
 	<build>

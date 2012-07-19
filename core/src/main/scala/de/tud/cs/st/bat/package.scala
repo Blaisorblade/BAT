@@ -52,6 +52,17 @@ package object bat {
    type AttributeParent = AttributesParent.Value
 
    type AttributesParent = AttributesParent.Value
+   /**
+    * Enumeration of all class file structures that can have attributes.
+    *
+    * @author Michael Eichberg
+    */
+   object AttributesParent extends Enumeration {
+     val ClassFile = Value
+     val Field = Value
+     val Method = Value
+     val Code = Value
+   }
 
    type ConstantPoolTag = ConstantPoolTags.Value
 

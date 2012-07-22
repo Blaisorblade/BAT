@@ -77,7 +77,7 @@ class SignatureParser extends RegexParsers {
             case ftps ~ psts ~ rt ~ tss ⇒ MethodTypeSignature(ftps, psts, rt, tss)
         }
 
-    protected val _Identifier: Parser[String] = """[^.;\[\]/\<>\:]*+""".r
+    protected val _Identifier: Parser[String] = """[^.;\[\]/\<>\:]+""".r
 
     protected def _FormalTypeParameters: Parser[List[FormalTypeParameter]] =
         '<' ~> rep1(_FormalTypeParameter) <~ '>'

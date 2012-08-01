@@ -563,26 +563,13 @@ object BasicJava6Framework
 
     type VerificationTypeInfo = de.tud.cs.st.bat.canonical.VerificationTypeInfo
 
-    case object TopVariableInfo extends de.tud.cs.st.bat.canonical.TopVariableInfo
-    def TopVariableInfo(): VerificationTypeInfo = TopVariableInfo
-
-    case object IntegerVariableInfo extends de.tud.cs.st.bat.canonical.IntegerVariableInfo
-    def IntegerVariableInfo(): VerificationTypeInfo = IntegerVariableInfo
-
-    case object FloatVariableInfo extends de.tud.cs.st.bat.canonical.FloatVariableInfo
-    def FloatVariableInfo(): VerificationTypeInfo = FloatVariableInfo
-
-    case object LongVariableInfo extends de.tud.cs.st.bat.canonical.LongVariableInfo
-    def LongVariableInfo(): VerificationTypeInfo = LongVariableInfo
-
-    case object DoubleVariableInfo extends de.tud.cs.st.bat.canonical.DoubleVariableInfo
-    def DoubleVariableInfo(): VerificationTypeInfo = DoubleVariableInfo
-
-    case object NullVariableInfo extends de.tud.cs.st.bat.canonical.NullVariableInfo
-    def NullVariableInfo(): VerificationTypeInfo = NullVariableInfo
-
-    case object UninitializedThisVariableInfo extends de.tud.cs.st.bat.canonical.UninitializedThisVariableInfo
-    def UninitializedThisVariableInfo(): VerificationTypeInfo = UninitializedThisVariableInfo
+    def DoubleVariableInfo(): VerificationTypeInfo = ???
+    def FloatVariableInfo(): VerificationTypeInfo = ???
+    def IntegerVariableInfo(): VerificationTypeInfo = ???
+    def LongVariableInfo(): VerificationTypeInfo = ???
+    def NullVariableInfo(): VerificationTypeInfo = ???
+    def TopVariableInfo(): VerificationTypeInfo = ???
+    def UninitializedThisVariableInfo(): VerificationTypeInfo = ???
 
     case class UninitializedVariableInfo(val offset: Int) extends de.tud.cs.st.bat.canonical.UninitializedVariableInfo
     def UninitializedVariableInfo(offset: Int): VerificationTypeInfo =

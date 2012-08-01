@@ -32,8 +32,6 @@
  */
 package de.tud.cs.st.bat.resolved
 
-import resolved._
-
 /**
  * Functionality to extract dependencies between class files.
  *

@@ -54,7 +54,7 @@
 								<args>
 									<arg>-unchecked</arg>
 									<arg>-deprecation</arg>
-									<arg>-explaintypes</arg>
+									<!--<arg>-explaintypes</arg>-->
 								</args>
 								<scalaVersion>${scala.version}</scalaVersion>
 							</configuration>

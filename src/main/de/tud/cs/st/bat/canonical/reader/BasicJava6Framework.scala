@@ -563,13 +563,13 @@ object BasicJava6Framework
 
     type VerificationTypeInfo = de.tud.cs.st.bat.canonical.VerificationTypeInfo
 
-    def DoubleVariableInfo(): VerificationTypeInfo = ???
-    def FloatVariableInfo(): VerificationTypeInfo = ???
-    def IntegerVariableInfo(): VerificationTypeInfo = ???
-    def LongVariableInfo(): VerificationTypeInfo = ???
-    def NullVariableInfo(): VerificationTypeInfo = ???
-    def TopVariableInfo(): VerificationTypeInfo = ???
-    def UninitializedThisVariableInfo(): VerificationTypeInfo = ???
+    def DoubleVariableInfo(): VerificationTypeInfo = throw new RuntimeException("not implemented")
+    def FloatVariableInfo(): VerificationTypeInfo = throw new RuntimeException("not implemented")
+    def IntegerVariableInfo(): VerificationTypeInfo = throw new RuntimeException("not implemented")
+    def LongVariableInfo(): VerificationTypeInfo = throw new RuntimeException("not implemented")
+    def NullVariableInfo(): VerificationTypeInfo = throw new RuntimeException("not implemented")
+    def TopVariableInfo(): VerificationTypeInfo = throw new RuntimeException("not implemented")
+    def UninitializedThisVariableInfo(): VerificationTypeInfo = throw new RuntimeException("not implemented")
 
     case class UninitializedVariableInfo(val offset: Int) extends de.tud.cs.st.bat.canonical.UninitializedVariableInfo
     def UninitializedVariableInfo(offset: Int): VerificationTypeInfo =

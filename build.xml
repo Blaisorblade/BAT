@@ -85,6 +85,7 @@ Author 	Michael Eichberg (mail@michael-eichberg.de)
 	<echo message="The Scala Lib directory is set to: ${scala.lib}" />
 	<property name="scala-compiler.jar" value="${scala.lib}/scala-compiler.jar" />
 	<property name="scala-library.jar" value="${scala.lib}/scala-library.jar" />
+	<property name="scala-actors.jar" value="${scala.lib}/scala-actors.jar" />
 
 	<property name="scalatest.jar" value="${lib.dir}/scalatest_2.10.0-M5-1.9-2.10.0-M5-B2.jar" />
 	<property name="junit.jar" value="${lib.dir}/junit-4.10.jar" />
@@ -100,6 +101,7 @@ Author 	Michael Eichberg (mail@michael-eichberg.de)
 	<path id="scala.classpath">
 		<pathelement location="${scala-compiler.jar}" />
 		<pathelement location="${scala-library.jar}" />
+		<pathelement location="${scala-actors.jar}" />
 	</path>
 	<path id="project.classpath">
 		<path refid="scala.classpath" />

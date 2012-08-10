@@ -160,7 +160,7 @@ object Main extends Main {
             println(", " /*"\tViolations: "*/ +protectedFields.size)
 
             // FINDBUGS: CN: Class implements Cloneable but does not define or use clone method (CN_IDIOM)
-            var cloneableNoClone = time(t ⇒ collect("CN_IDIOM",t /*nsToSecs(t)*/ )) {
+            val cloneableNoClone = time(t ⇒ collect("CN_IDIOM",t /*nsToSecs(t)*/ )) {
                 // Weakness: We will not identify cloneable classes in projects, where we extend a predefined
                 // class (of the JDK) that indirectly inherits from Cloneable.
                 for {
@@ -176,7 +176,7 @@ object Main extends Main {
             println(", "+cloneableNoClone.size)
 
             // FINDBUGS: CN: clone method does not call super.clone() (CN_IDIOM_NO_SUPER_CALL)
-            var cloneDoesNotCallSuperClone = time(t ⇒ collect("CN_IDIOM_NO_SUPER_CALL",t /*nsToSecs(t)*/ )) {
+            val cloneDoesNotCallSuperClone = time(t ⇒ collect("CN_IDIOM_NO_SUPER_CALL",t /*nsToSecs(t)*/ )) {
                 for {
                     classFile ← classFiles
                     if !classFile.isInterfaceDeclaration && !classFile.isAnnotationDeclaration
@@ -192,7 +192,7 @@ object Main extends Main {
             println(", " /*"\tViolations: "*/ +cloneDoesNotCallSuperClone.size /*+": "+cloneDoesNotCallSuperClone.mkString("; ")*/ )
 
             // FINDBUGS: CN: Class defines clone() but doesn't implement Cloneable (CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE)
-            var cloneButNotCloneable = time(t ⇒ collect("CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",t /*nsToSecs(t)*/ )) {
+            val cloneButNotCloneable = time(t ⇒ collect("CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",t /*nsToSecs(t)*/ )) {
                 for {
                     classFile ← classFiles if !classFile.isAnnotationDeclaration && classFile.superClass.isDefined
                     method @ Method(_, "clone", MethodDescriptor(Seq(), ObjectType.Object), _) ← classFile.methods

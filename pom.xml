@@ -15,7 +15,7 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<scala.version>2.10.0-M5</scala.version>
+		<scala.version>2.10.0</scala.version>
 		<scala.baseversion>2.10</scala.baseversion>
 	</properties>
 
@@ -133,8 +133,8 @@
 		</dependency>
 		<dependency>
 			<groupId>org.scalatest</groupId>
-			<artifactId>scalatest_${scala.version}</artifactId>
-			<version>1.9-2.10.0-M5-B2</version>
+			<artifactId>scalatest_${scala.baseversion}</artifactId>
+			<version>2.0.M5b</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>

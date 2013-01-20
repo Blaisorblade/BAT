@@ -160,7 +160,7 @@ object Main extends Main {
             println(", " /*"\tViolations: "*/ +protectedFields.size)
 
             // FINDBUGS: CN: Class implements Cloneable but does not define or use clone method (CN_IDIOM)
-            var cloneableNoClone = time(t ⇒ collect("CN_IDIOM",t /*nsToSecs(t)*/ )) {
+            val cloneableNoClone = time(t ⇒ collect("CN_IDIOM",t /*nsToSecs(t)*/ )) {
                 // Weakness: We will not identify cloneable classes in projects, where we extend a predefined
                 // class (of the JDK) that indirectly inherits from Cloneable.
                 for {
@@ -176,7 +176,7 @@ object Main extends Main {
             println(", "+cloneableNoClone.size)
 
             // FINDBUGS: CN: clone method does not call super.clone() (CN_IDIOM_NO_SUPER_CALL)
-            var cloneDoesNotCallSuperClone = time(t ⇒ collect("CN_IDIOM_NO_SUPER_CALL",t /*nsToSecs(t)*/ )) {
+            val cloneDoesNotCallSuperClone = time(t ⇒ collect("CN_IDIOM_NO_SUPER_CALL",t /*nsToSecs(t)*/ )) {
                 for {
                     classFile ← classFiles
                     if !classFile.isInterfaceDeclaration && !classFile.isAnnotationDeclaration
@@ -192,7 +192,7 @@ object Main extends Main {
             println(", " /*"\tViolations: "*/ +cloneDoesNotCallSuperClone.size /*+": "+cloneDoesNotCallSuperClone.mkString("; ")*/ )
 
             // FINDBUGS: CN: Class defines clone() but doesn't implement Cloneable (CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE)
-            var cloneButNotCloneable = time(t ⇒ collect("CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",t /*nsToSecs(t)*/ )) {
+            val cloneButNotCloneable = time(t ⇒ collect("CN_IMPLEMENTS_CLONE_BUT_NOT_CLONEABLE",t /*nsToSecs(t)*/ )) {
                 for {
                     classFile ← classFiles if !classFile.isAnnotationDeclaration && classFile.superClass.isDefined
                     method @ Method(_, "clone", MethodDescriptor(Seq(), ObjectType.Object), _) ← classFile.methods
@@ -204,7 +204,7 @@ object Main extends Main {
             // FINDBUGS: Co: Abstract class defines covariant compareTo() method (CO_ABSTRACT_SELF)
             // FINDBUGS: Co: Covariant compareTo() method defined (CO_SELF_NO_OBJECT)
             // This class defines a covariant version of compareTo().  To correctly override the compareTo() method in the Comparable interface, the parameter of compareTo() must have type java.lang.Object.
-            var covariantCompareToMethods = time(t ⇒ collect("CO_SELF_NO_OBJECT/CO_ABSTRACT_SELF",t /*nsToSecs(t)*/ )) {
+            val covariantCompareToMethods = time(t ⇒ collect("CO_SELF_NO_OBJECT/CO_ABSTRACT_SELF",t /*nsToSecs(t)*/ )) {
                 // Weakness: In a project, where we extend a predefined class (of the JDK) that
                 // inherits from Comparable and in which we define covariant comparesTo method,
                 // we will not be able to identify this issue unless we have identified the whole
@@ -220,7 +220,7 @@ object Main extends Main {
             println(", " /*"\tViolations: "*/ +covariantCompareToMethods.size)
 
             // FINDBUGS: Dm: Explicit garbage collection; extremely dubious except in benchmarking code (DM_GC)
-            var garbageCollectingMethods: List[(ClassFile, Method, Instruction)] = Nil
+            val garbageCollectingMethods: List[(ClassFile, Method, Instruction)] = Nil
             time(t ⇒ collect("DM_GC",t /*nsToSecs(t)*/ )) {
                 for ( // we don't care about gc calls in java.lang and also about gc calls that happen inside of methods related to garbage collection (heuristic)
                     classFile ← classFiles if !classFile.thisClass.className.startsWith("java/lang");
